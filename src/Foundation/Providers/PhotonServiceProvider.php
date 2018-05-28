@@ -1,8 +1,7 @@
 <?php
 
-namespace Photon\Providers;
+namespace Photon\Foundation\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Photon\Console\ServeCommand;
 use Photon\Console\JobMakeCommand;
 use Photon\Console\MailMakeCommand;
