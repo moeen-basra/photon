@@ -3,7 +3,7 @@
 namespace DummyNamespace;
 
 use DummyFullModelClass;
-use Illuminate\Http\Request;
+use Photon\Foundation\Http\Request;
 use DummyRootNamespaceHttp\Controllers\Controller;
 
 class DummyClass extends Controller
@@ -11,7 +11,7 @@ class DummyClass extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Photon\Foundation\Feature
      */
     public function index()
     {
@@ -21,7 +21,7 @@ class DummyClass extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Photon\Foundation\Feature
      */
     public function create()
     {
@@ -31,8 +31,8 @@ class DummyClass extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  \Photon\Foundation\Http\Request  $request
+     * @return \Photon\Foundation\Feature
      */
     public function store(Request $request)
     {
@@ -43,7 +43,7 @@ class DummyClass extends Controller
      * Display the specified resource.
      *
      * @param  \DummyFullModelClass  $DummyModelVariable
-     * @return \Illuminate\Http\Response
+     * @return \Photon\Foundation\Feature
      */
     public function show(DummyModelClass $DummyModelVariable)
     {
@@ -54,7 +54,7 @@ class DummyClass extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \DummyFullModelClass  $DummyModelVariable
-     * @return \Illuminate\Http\Response
+     * @return \Photon\Foundation\Feature
      */
     public function edit(DummyModelClass $DummyModelVariable)
     {
@@ -64,9 +64,9 @@ class DummyClass extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Photon\Foundation\Http\Request  $request
      * @param  \DummyFullModelClass  $DummyModelVariable
-     * @return \Illuminate\Http\Response
+     * @return \Photon\Foundation\Feature
      */
     public function update(Request $request, DummyModelClass $DummyModelVariable)
     {
@@ -77,7 +77,7 @@ class DummyClass extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \DummyFullModelClass  $DummyModelVariable
-     * @return \Illuminate\Http\Response
+     * @return \Photon\Foundation\Feature
      */
     public function destroy(DummyModelClass $DummyModelVariable)
     {

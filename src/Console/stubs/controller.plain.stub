@@ -2,7 +2,7 @@
 
 namespace DummyNamespace;
 
-use Illuminate\Http\Request;
+use Photon\Foundation\Http\Request;
 use DummyRootNamespaceHttp\Controllers\Controller;
 
 class DummyClass extends Controller

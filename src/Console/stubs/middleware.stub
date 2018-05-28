@@ -9,7 +9,7 @@ class DummyClass
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Photon\Foundation\Http\Request  $request
      * @param  \Closure  $next
      * @return mixed
      */
