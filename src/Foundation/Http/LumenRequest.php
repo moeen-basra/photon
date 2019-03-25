@@ -3,7 +3,7 @@
 namespace Photon\Foundation\Http;
 
 
-class Request extends \Illuminate\Http\Request
+class LumenRequest extends \Laravel\Lumen\Http\Request
 {
     protected $comparisonSymbols = [':', '=', '<', '>', '<=', '>=', '!='];
 

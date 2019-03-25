@@ -53,3 +53,15 @@ if (! function_exists('bcrypt')) {
         return app('hash')->make($value, $options);
     }
 }
+
+if (!function_exists('isNotLumen')) {
+    /**
+     * check if app is not lumen
+     *
+     * @return bool
+     */
+    function isNotLumen() : bool
+    {
+        return ! preg_match('/lumen/i', app()->version());
+    }
+}
