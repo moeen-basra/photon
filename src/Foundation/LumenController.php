@@ -15,7 +15,7 @@ use Photon\Foundation\Traits\ServesFeaturesTrait;
  * Class LumenController
  * @package Photon\Foundation
  */
-abstract class LumenController extends Laravel\Lumen\Routing\Controller
+abstract class LumenController extends \Laravel\Lumen\Routing\Controller
 {
     use ServesFeaturesTrait;
 }
