@@ -20,7 +20,7 @@ class JsonErrorResponseJob extends Job
             'status' => $status,
             'error'  => [
                 'code'    => $code,
-                'message' => str_contains($message,'PhotonInputException') ? array_except(json_decode($message, true), ['PhotonInputException']) : $message,
+                'message' => $message,
             ],
         ];
         $this->status  = $status;

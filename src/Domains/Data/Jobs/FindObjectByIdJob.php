@@ -4,15 +4,15 @@ namespace Photon\Domains\Data\Jobs;
 
 use Photon\Foundation\Job;
 
-class FindObjectByIDJob extends Job
+class FindObjectByIdJob extends Job
 {
     protected $model;
 
     protected $primaryKey;
 
-    protected $objectID;
+    protected $objectId;
 
-    public function __construct($model, int $objectID, $primaryKey = 'id')
+    public function __construct($model, int $objectId, $primaryKey = 'id')
     {
         if (is_string($model)) {
             $model = new $model;
@@ -20,11 +20,11 @@ class FindObjectByIDJob extends Job
 
         $this->model = $model;
         $this->primaryKey = $primaryKey;
-        $this->objectID = $objectID;
+        $this->objectId = $objectId;
     }
 
     public function handle()
     {
-        return $this->model->findOrFail($this->objectID);
+        return $this->model->findOrFail($this->objectId);
     }
 }

@@ -15,13 +15,13 @@ class FindEloquentObjectFromRequestJob extends Job
 
     protected $primaryKey;
 
-    protected $objectID;
+    protected $objectId;
 
-    public function __construct($model, int $objectID, $primaryKey = 'id')
+    public function __construct($model, $objectId, $primaryKey = 'id')
     {
         $this->model = $model;
         $this->primaryKey = $primaryKey;
-        $this->objectID = $objectID;
+        $this->objectId = $objectId;
     }
 
     public function handle(Request $request)
@@ -30,7 +30,7 @@ class FindEloquentObjectFromRequestJob extends Job
         $this->captureRequestQuery($request);
         // Filtering is not allowed in case of single object queries
         $this->setFilters(new RequestFilterCollection());
-        $result = $this->buildQuery()->where($this->primaryKey, '=', $this->objectID);
+        $result = $this->buildQuery()->where($this->primaryKey, '=', $this->objectId);
 
         return $result->firstOrFail();
     }
