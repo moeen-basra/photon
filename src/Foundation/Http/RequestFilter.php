@@ -5,7 +5,7 @@ namespace Photon\Foundation\Http;
 /**
  * Class RequestFilter
  *
- * @package Awok\Foundation\Http
+ * @package Photon\Foundation\Http
  */
 class RequestFilter
 {
@@ -146,7 +146,7 @@ class RequestFilter
     /**
      * Return filter field object
      *
-     * @return \Awok\Foundation\Http\RequestField
+     * @return \Photon\Foundation\Http\RequestField
      */
     public function getField()
     {

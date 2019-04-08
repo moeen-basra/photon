@@ -113,7 +113,7 @@ trait EloquentRequestQueryable
             $this->relationName     = $this->getModel()->getRelated()->getTable();
             $this->relationInstance = true;
             $queryBuilder           = $this->getModel()->getQuery();
-        } elseif ($this->getModel() instanceof \Awok\Foundation\Eloquent\Builder) {
+        } elseif ($this->getModel() instanceof \Photon\Foundation\Eloquent\Builder) {
             $queryBuilder = $this->getModel();
         } else {
             throw new \InvalidArgumentException('Invalid Model/Builder/Relation supplied');

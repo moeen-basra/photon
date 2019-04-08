@@ -9,7 +9,7 @@ use Photon\Foundation\Traits\ServesFeaturesTrait;
  * Class Controller
  * @package Photon\Foundation
  */
-class Controller extends \Illuminate\Routing\Controller
+class Controller extends \Laravel\Lumen\Routing\Controller
 {
     use ServesFeaturesTrait;
 }

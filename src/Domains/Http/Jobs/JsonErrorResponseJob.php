@@ -1,8 +1,8 @@
 <?php
+
 namespace Photon\Domains\Http\Jobs;
 
 use Photon\Foundation\Job;
-use Laravel\Lumen\Http\ResponseFactory;
 
 class JsonErrorResponseJob extends Job
 {
@@ -18,12 +18,12 @@ class JsonErrorResponseJob extends Job
     {
         $this->content = [
             'status' => $status,
-            'error'  => [
-                'code'    => $code,
+            'error' => [
+                'code' => $code,
                 'message' => $message,
             ],
         ];
-        $this->status  = $status;
+        $this->status = $status;
         $this->headers = $headers;
         $this->options = $options;
     }

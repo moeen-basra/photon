@@ -5,7 +5,7 @@ namespace Photon\Foundation\Http;
 /**
  * Class RequestField
  *
- * @package Awok\Foundation\Http
+ * @package Photon\Foundation\Http
  */
 class RequestField
 {

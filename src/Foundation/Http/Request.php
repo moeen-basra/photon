@@ -3,7 +3,7 @@
 namespace Photon\Foundation\Http;
 
 
-class Request extends \Illuminate\Http\Request
+class Request extends \Laravel\Lumen\Http\Request
 {
     protected $comparisonSymbols = [':', '=', '<', '>', '<=', '>=', '!='];
 
@@ -33,7 +33,7 @@ class Request extends \Illuminate\Http\Request
     /**
      * Get Request Fields
      *
-     * @return \Awok\Foundation\Http\RequestFieldCollection|null
+     * @return \Photon\Foundation\Http\RequestFieldCollection|null
      */
     public function getFields()
     {
@@ -55,7 +55,7 @@ class Request extends \Illuminate\Http\Request
     /**
      * Get Request Filters
      *
-     * @return \Awok\Foundation\Http\RequestFilterCollection
+     * @return \Photon\Foundation\Http\RequestFilterCollection
      */
     public function getFilters()
     {
@@ -77,7 +77,7 @@ class Request extends \Illuminate\Http\Request
     /**
      *  Get Request sort fields
      *
-     * @return \Awok\Foundation\Http\RequestSortCollection
+     * @return \Photon\Foundation\Http\RequestSortCollection
      */
     public function getSort()
     {
@@ -99,7 +99,7 @@ class Request extends \Illuminate\Http\Request
     /**
      * Get Request Relations
      *
-     * @return \Awok\Foundation\Http\RequestRelationFieldCollection
+     * @return \Photon\Foundation\Http\RequestRelationFieldCollection
      */
     public function getRelations()
     {

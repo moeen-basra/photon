@@ -17,7 +17,7 @@ class InputFilterJob extends Job
 
         // since user can override the expected keys in child class
         // so if it is done already we don't need to update with empty here..
-        if (! empty($expectedKeys)) {
+        if (!empty($expectedKeys)) {
             $this->expectedKeys = $expectedKeys;
         }
     }
