@@ -1,6 +1,6 @@
 {
   "name": "moeen/photon",
-  "description": "Lumen Extension for SRP (Single Responsibility Principle)",
+  "description": "Laravel Extension for SRP (Single Responsibility Principle)",
   "keywords": [
     "photon",
     "laravel",
@@ -21,8 +21,7 @@
     "ext-mbstring": "*"
   },
   "require-dev": {
-    "laravel/framework": "5.8.*",
-    "laravel/lumen-framework": "5.8.*"
+    "laravel/framework": "5.8.*"
   },
   "autoload": {
     "psr-4": {

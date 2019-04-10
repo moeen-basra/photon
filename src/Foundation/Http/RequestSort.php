@@ -5,7 +5,7 @@ namespace Photon\Foundation\Http;
 /**
  * Class RequestSort
  *
- * @package Awok\Foundation\Http
+ * @package Photon\Foundation\Http
  */
 class RequestSort
 {
@@ -73,7 +73,7 @@ class RequestSort
     /**
      * Return the request sort field instance
      *
-     * @return \Awok\Foundation\Http\RequestField
+     * @return \Photon\Foundation\Http\RequestField
      */
     public function getField()
     {

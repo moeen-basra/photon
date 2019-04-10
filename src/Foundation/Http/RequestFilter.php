@@ -5,7 +5,7 @@ namespace Photon\Foundation\Http;
 /**
  * Class RequestFilter
  *
- * @package Awok\Foundation\Http
+ * @package Photon\Foundation\Http
  */
 class RequestFilter
 {
@@ -38,13 +38,13 @@ class RequestFilter
      * RequestFilter constructor.
      *
      * @param string $filter
-     * @param array  $comparisonSymbols
+     * @param array $comparisonSymbols
      */
     public function __construct(string $filter, $comparisonSymbols = [])
     {
         $this->setFilter($filter);
 
-        if (! empty($comparisonSymbols)) {
+        if (!empty($comparisonSymbols)) {
             $this->setFilterSymbols($comparisonSymbols);
         }
     }
@@ -54,12 +54,12 @@ class RequestFilter
      *
      * @param $filter
      *
-     * @throws \InvalidArgumentException
      * @return bool
+     * @throws \InvalidArgumentException
      */
     protected function setFilter($filter)
     {
-        if (! $this->isValidFilter($filter)) {
+        if (!$this->isValidFilter($filter)) {
             throw new \InvalidArgumentException("Invalid request filter {$filter} supplied");
         }
 
@@ -79,7 +79,7 @@ class RequestFilter
      */
     protected function isValidFilter($filter)
     {
-        if (! str_contains($filter, $this->getComparisonSymbols())) {
+        if (!str_contains($filter, $this->getComparisonSymbols())) {
             return false;
         }
 
@@ -99,16 +99,16 @@ class RequestFilter
     /**
      * Parses the raw filter
      *
-     * @throws \InvalidArgumentException
      * @return bool
+     * @throws \InvalidArgumentException
      */
     protected function parseFilter()
     {
         $filterFragments = [];
-        preg_match('/^([a-zA-Z0-9\-\_\.]+)('.implode('|', $this->getComparisonSymbols()).'{1})(([a-zA-Z0-9\-\_\:\% ]+)|\(([a-zA-Z0-9\-\_\:\% \|]+)\))$/', $this->getRawFilter(), $filterFragments);
+        preg_match('/^([a-zA-Z0-9\-\_\.]+)(' . implode('|', $this->getComparisonSymbols()) . '{1})(([a-zA-Z0-9\-\_\:\% ]+)|\(([a-zA-Z0-9\-\_\:\% \|]+)\))$/', $this->getRawFilter(), $filterFragments);
 
         if (count($filterFragments) < 5) {
-            throw new \InvalidArgumentException('Malformed filter '.$this->getRawFilter().' was provided');
+            throw new \InvalidArgumentException('Malformed filter ' . $this->getRawFilter() . ' was provided');
         }
 
         $this->setField($filterFragments[1]);
@@ -146,7 +146,7 @@ class RequestFilter
     /**
      * Return filter field object
      *
-     * @return \Awok\Foundation\Http\RequestField
+     * @return \Photon\Foundation\Http\RequestField
      */
     public function getField()
     {
