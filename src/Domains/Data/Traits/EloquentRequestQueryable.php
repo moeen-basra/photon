@@ -1,19 +1,21 @@
 <?php
 
-namespace Photon\Domains\Data\Traits;
+namespace MoeenBasra\Photon\Domains\Data\Traits;
 
-use Photon\Foundation\Eloquent\Model;
-use Photon\Foundation\Http\Request;
-use Photon\Foundation\Http\RequestFieldCollection;
-use Photon\Foundation\Http\RequestFilter;
-use Photon\Foundation\Http\RequestFilterCollection;
-use Photon\Foundation\Http\RequestRelationField;
-use Photon\Foundation\Http\RequestRelationFieldCollection;
-use Photon\Foundation\Http\RequestSort;
-use Photon\Foundation\Http\RequestSortCollection;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Relations\Relation;
+use Exception;
 use Illuminate\Support\Arr;
+use InvalidArgumentException;
+use Illuminate\Database\Eloquent\Builder;
+use MoeenBasra\Photon\Foundation\Http\Request;
+use MoeenBasra\Photon\Foundation\Eloquent\Model;
+use MoeenBasra\Photon\Foundation\Http\RequestSort;
+use MoeenBasra\Photon\Foundation\Http\RequestFilter;
+use Illuminate\Database\Eloquent\Relations\Relation;
+use MoeenBasra\Photon\Foundation\Http\RequestRelationField;
+use MoeenBasra\Photon\Foundation\Http\RequestSortCollection;
+use MoeenBasra\Photon\Foundation\Http\RequestFieldCollection;
+use MoeenBasra\Photon\Foundation\Http\RequestFilterCollection;
+use MoeenBasra\Photon\Foundation\Http\RequestRelationFieldCollection;
 
 trait EloquentRequestQueryable
 {
@@ -33,17 +35,17 @@ trait EloquentRequestQueryable
 
     private $relationName = null;
 
+    public function getModel()
+    {
+        return $this->model;
+    }
+
     public function setModel($model)
     {
         if (is_string($model)) {
             $model = new $model;
         }
         $this->model = $model;
-    }
-
-    public function getModel()
-    {
-        return $this->model;
     }
 
     public function getRelations()
@@ -69,8 +71,8 @@ trait EloquentRequestQueryable
     public function captureRequestQuery(Request $request)
     {
 
-        if (! $this->getModel()) {
-            throw new \Exception('No model set to use for query');
+        if (!$this->getModel()) {
+            throw new Exception('No model set to use for query');
         }
 
         $this->setFields($request->getFields());
@@ -85,7 +87,7 @@ trait EloquentRequestQueryable
     /**
      * returns pagination result
      *
-     * @param string       $dataKey
+     * @param string $dataKey
      * @param              $results
      *
      * @return mixed
@@ -105,18 +107,51 @@ trait EloquentRequestQueryable
         $this->perPage = $perPage;
     }
 
+    /**
+     * @return RequestFieldCollection|null
+     */
+    public function getFields()
+    {
+        return $this->fields;
+    }
+
+    protected function setFields(RequestFieldCollection $fields)
+    {
+        $this->fields = $fields;
+    }
+
+    public function getFilters()
+    {
+        return $this->filters;
+    }
+
+    protected function setFilters(RequestFilterCollection $filters)
+    {
+        $this->filters = $filters;
+    }
+
+    public function getSorting()
+    {
+        return $this->sorting;
+    }
+
+    protected function setSorting(RequestSortCollection $sort)
+    {
+        $this->sorting = $sort;
+    }
+
     protected function buildQuery()
     {
         if ($this->getModel() instanceof Model) {
             $queryBuilder = $this->getModel()->newQuery();
         } elseif ($this->getModel() instanceof Relation) {
-            $this->relationName     = $this->getModel()->getRelated()->getTable();
+            $this->relationName = $this->getModel()->getRelated()->getTable();
             $this->relationInstance = true;
-            $queryBuilder           = $this->getModel()->getQuery();
+            $queryBuilder = $this->getModel()->getQuery();
         } elseif ($this->getModel() instanceof \Photon\Foundation\Eloquent\Builder) {
             $queryBuilder = $this->getModel();
         } else {
-            throw new \InvalidArgumentException('Invalid Model/Builder/Relation supplied');
+            throw new InvalidArgumentException('Invalid Model/Builder/Relation supplied');
         }
 
         $this->appendSelect($queryBuilder);
@@ -131,7 +166,7 @@ trait EloquentRequestQueryable
     {
         $selectFields = [];
 
-        if (! $this->getFields()->count() > 0) {
+        if (!$this->getFields()->count() > 0) {
             $builder->select(['*']);
 
             return true;
@@ -146,22 +181,9 @@ trait EloquentRequestQueryable
         return true;
     }
 
-    /**
-     * @return RequestFieldCollection|null
-     */
-    public function getFields()
-    {
-        return $this->fields;
-    }
-
-    protected function setFields(RequestFieldCollection $fields)
-    {
-        $this->fields = $fields;
-    }
-
     protected function appendFilters(Builder $builder)
     {
-        if (! $this->getFilters()->count() > 0) {
+        if (!$this->getFilters()->count() > 0) {
             return true;
         }
 
@@ -181,30 +203,20 @@ trait EloquentRequestQueryable
         return true;
     }
 
-    public function getFilters()
-    {
-        return $this->filters;
-    }
-
-    protected function setFilters(RequestFilterCollection $filters)
-    {
-        $this->filters = $filters;
-    }
-
     /**
      * @param \Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder $builder
-     * @param                                                                          $filter
+     * @param $filter
      */
-    protected function applyClause($builder, $filter)
+    protected function applyClause($builder, RequestFilter $filter)
     {
         $filterField = $filter->getField();
         if ($filterField->isRelational()) {
-            $fieldNamePrefix = Arr::last($filterField->getRelationFragments()).'.';
+            $fieldNamePrefix = Arr::last($filterField->getRelationFragments()) . '.';
         } else {
-            $fieldNamePrefix = $this->isRelationInstance() ? $this->getRelationName().'.' : '';
+            $fieldNamePrefix = $this->isRelationInstance() ? $this->getRelationName() . '.' : '';
         }
 
-        $fieldName = $fieldNamePrefix.$filterField->getName();
+        $fieldName = $fieldNamePrefix . $filterField->getName();
         if (is_array($filter->getFilterValue())) {
             $not = false;
             if ($filter->getCompareSymbol() == '!=') {
@@ -224,7 +236,7 @@ trait EloquentRequestQueryable
 
     protected function appendSort(Builder $builder)
     {
-        if (! $this->getSorting()->count() > 0) {
+        if (!$this->getSorting()->count() > 0) {
             return true;
         }
 
@@ -246,7 +258,7 @@ trait EloquentRequestQueryable
 
     protected function appendRelations(Builder $builder)
     {
-        if (! $this->getRelations()->count() > 0) {
+        if (!$this->getRelations()->count() > 0) {
             return true;
         }
 
@@ -264,11 +276,11 @@ trait EloquentRequestQueryable
                     $referencedTableName = $query->getRelated()->getTable();
                     if ($relation->hasSubFields()) {
                         $subFields = array_map(function ($subField) use ($relationName, $referencedTableName) {
-                            return $referencedTableName.'.'.$subField->getName();
+                            return $referencedTableName . '.' . $subField->getName();
                         }, iterator_to_array($relation->getSubFields()));
-                        $select    = array_merge($subFields);
+                        $select = array_merge($subFields);
                     } else {
-                        $select = [$referencedTableName.'.*'];
+                        $select = [$referencedTableName . '.*'];
                     }
 
                     $query->select($select);
@@ -277,15 +289,5 @@ trait EloquentRequestQueryable
         }
 
         return true;
-    }
-
-    public function getSorting()
-    {
-        return $this->sorting;
-    }
-
-    protected function setSorting(RequestSortCollection $sort)
-    {
-        $this->sorting = $sort;
     }
 }

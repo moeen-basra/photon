@@ -1,6 +1,6 @@
 <?php
 
-namespace Photon\Foundation\Http;
+namespace MoeenBasra\Photon\Foundation\Http;
 
 
 class Request extends \Illuminate\Http\Request
@@ -10,13 +10,13 @@ class Request extends \Illuminate\Http\Request
     /**
      * Intersect an array of items with the input data (EMPTY VALUES INCLUDED).
      *
-     * @param  array|mixed $keys
+     * @param array|mixed $keys
      *
      * @return array
      */
     public function expect($keys)
     {
-        $all  = $this->request->all();
+        $all = $this->request->all();
         $only = $this->only(is_array($keys) ? $keys : func_get_args());
 
         $results = [];
@@ -33,14 +33,14 @@ class Request extends \Illuminate\Http\Request
     /**
      * Get Request Fields
      *
-     * @return \Photon\Foundation\Http\RequestFieldCollection|null
+     * @return \MoeenBasra\Photon\Foundation\Http\RequestFieldCollection|null
      */
     public function getFields()
     {
 
         $requestFieldsCollection = new RequestFieldCollection();
 
-        if (! $this->has('fields')) {
+        if (!$this->has('fields')) {
             return $requestFieldsCollection;
         }
         $fields = $this->get('fields');
@@ -55,13 +55,13 @@ class Request extends \Illuminate\Http\Request
     /**
      * Get Request Filters
      *
-     * @return \Photon\Foundation\Http\RequestFilterCollection
+     * @return \MoeenBasra\Photon\Foundation\Http\RequestFilterCollection
      */
     public function getFilters()
     {
         $requestFilterCollection = new RequestFilterCollection();
 
-        if (! $this->has('q')) {
+        if (!$this->has('q')) {
             return $requestFilterCollection;
         }
 
@@ -77,13 +77,13 @@ class Request extends \Illuminate\Http\Request
     /**
      *  Get Request sort fields
      *
-     * @return \Photon\Foundation\Http\RequestSortCollection
+     * @return \MoeenBasra\Photon\Foundation\Http\RequestSortCollection
      */
     public function getSort()
     {
         $requestSortCollection = new RequestSortCollection();
 
-        if (! $this->has('sort')) {
+        if (!$this->has('sort')) {
             return $requestSortCollection;
         }
 
@@ -99,13 +99,13 @@ class Request extends \Illuminate\Http\Request
     /**
      * Get Request Relations
      *
-     * @return \Photon\Foundation\Http\RequestRelationFieldCollection
+     * @return \MoeenBasra\Photon\Foundation\Http\RequestRelationFieldCollection
      */
     public function getRelations()
     {
         $requestRelationFieldCollection = new RequestRelationFieldCollection();
 
-        if (! $this->has('with')) {
+        if (!$this->has('with')) {
             return $requestRelationFieldCollection;
         }
 

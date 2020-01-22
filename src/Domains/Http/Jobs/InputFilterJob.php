@@ -1,9 +1,9 @@
 <?php
 
-namespace Photon\Domains\Http\Jobs;
+namespace MoeenBasra\Photon\Domains\Http\Jobs;
 
-use Photon\Foundation\Exceptions\Exception;
-use Photon\Foundation\Job;
+use MoeenBasra\Photon\Foundation\Job;
+use MoeenBasra\Photon\Foundation\Exceptions\Exception;
 
 class InputFilterJob extends Job
 {
@@ -17,7 +17,7 @@ class InputFilterJob extends Job
 
         // since user can override the expected keys in child class
         // so if it is done already we don't need to update with empty here..
-        if (! empty($expectedKeys)) {
+        if (!empty($expectedKeys)) {
             $this->expectedKeys = $expectedKeys;
         }
     }

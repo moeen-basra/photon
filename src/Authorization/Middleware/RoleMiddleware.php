@@ -1,9 +1,10 @@
 <?php
 
-namespace Photon\Authorization\Middleware;
+namespace MoeenBasra\Photon\Authorization\Middleware;
 
+use Closure;
 use Illuminate\Contracts\Foundation\Application;
-use Photon\Authorization\Exceptions\UnauthorizedAccess;
+use MoeenBasra\Photon\Authorization\Exceptions\UnauthorizedAccess;
 
 class RoleMiddleware
 {
@@ -14,10 +15,11 @@ class RoleMiddleware
      * @param \Closure $next
      * @param $role
      * @param bool $requireAll
+     *
      * @return mixed
      * @throws UnauthorizedAccess
      */
-    public function handle(Application $app, $request, \Closure $next, $role, $requireAll = false)
+    public function handle(Application $app, $request, Closure $next, $role, $requireAll = false)
     {
         $roles = explode('|', $role);
 

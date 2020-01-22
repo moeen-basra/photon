@@ -1,9 +1,10 @@
 <?php
 
-namespace Photon\Domains\Authorization\Jobs;
+namespace MoeenBasra\Photon\Domains\Authorization\Jobs;
 
-use Photon\Authorization\Exceptions\UnauthorizedAccess;
-use Photon\Foundation\Job;
+use Closure;
+use MoeenBasra\Photon\Foundation\Job;
+use MoeenBasra\Photon\Authorization\Exceptions\UnauthorizedAccess;
 
 class CapabilityCheckJob extends Job
 {
@@ -11,7 +12,7 @@ class CapabilityCheckJob extends Job
 
     protected $closure;
 
-    public function __construct(\Closure $closure)
+    public function __construct(Closure $closure)
     {
         $this->authorization = app('authorization');
         $this->closure = $closure;

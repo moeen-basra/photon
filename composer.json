@@ -1,14 +1,13 @@
 {
-  "name": "moeen/photon",
+  "name": "moeen-basra/photon",
   "description": "Laravel Extension for SRP (Single Responsibility Principle)",
   "keywords": [
     "photon",
     "laravel",
-    "lumen"
+    "SRP"
   ],
   "type": "library",
   "license": "MIT",
-  "version": "0.2.0",
   "authors": [
     {
       "name": "Moeen Basra",
@@ -16,16 +15,16 @@
     }
   ],
   "require": {
-    "php": ">=7.1.3",
+    "php": ">=7.2",
     "ext-json": "*",
     "ext-mbstring": "*"
   },
   "require-dev": {
-    "laravel/framework": "5.8.*"
+    "laravel/framework": "^6.12"
   },
   "autoload": {
     "psr-4": {
-      "Photon\\": "src/"
+      "MoeenBasra\\Photon\\": "src/"
     },
     "files": [
       "src/helpers.php"

@@ -1,6 +1,6 @@
 <?php
 
-namespace Photon\Authorization;
+namespace MoeenBasra\Photon\Authorization;
 
 use Closure;
 use Illuminate\Contracts\Container\Container as Application;
@@ -29,19 +29,6 @@ class Authorization implements AuthorizeContract
         return false;
     }
 
-    protected function checkMultipleRoles(array $rolesNames, bool $requireAll)
-    {
-        foreach ($rolesNames as $roleName) {
-            $hasRole = $this->hasRole($roleName);
-            if ($hasRole && !$requireAll) {
-                return true;
-            } elseif (!$hasRole && $requireAll) {
-                return false;
-            }
-        }
-        return $requireAll;
-    }
-
     public function getUser()
     {
         return $this->app->make('auth')->user();
@@ -58,5 +45,18 @@ class Authorization implements AuthorizeContract
             return true;
         }
         return false;
+    }
+
+    protected function checkMultipleRoles(array $rolesNames, bool $requireAll)
+    {
+        foreach ($rolesNames as $roleName) {
+            $hasRole = $this->hasRole($roleName);
+            if ($hasRole && !$requireAll) {
+                return true;
+            } elseif (!$hasRole && $requireAll) {
+                return false;
+            }
+        }
+        return $requireAll;
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Photon\Foundation\Pagination;
+namespace MoeenBasra\Photon\Foundation\Pagination;
 
 class LengthAwarePaginator extends \Illuminate\Pagination\LengthAwarePaginator
 {
@@ -10,8 +10,7 @@ class LengthAwarePaginator extends \Illuminate\Pagination\LengthAwarePaginator
         $perPage,
         $currentPage,
         array $options
-    )
-    {
+    ) {
         parent::__construct($items, $total, $perPage, $currentPage, $options);
     }
 

@@ -1,13 +1,15 @@
 <?php
 
-namespace Photon\Foundation\Traits;
+namespace MoeenBasra\Photon\Foundation\Traits;
+
+use ArrayAccess;
 
 trait DispatchesJobsTrait
 {
     /**
      * Dispatch a job to its appropriate handler.
      *
-     * @param  mixed $job
+     * @param mixed $job
      *
      * @return mixed
      */
@@ -19,8 +21,8 @@ trait DispatchesJobsTrait
     /**
      * Marshal a job and dispatch it to its appropriate handler.
      *
-     * @param  mixed $job
-     * @param  array $array
+     * @param mixed $job
+     * @param array $array
      *
      * @return mixed
      */
@@ -32,13 +34,13 @@ trait DispatchesJobsTrait
     /**
      * Marshal a job and dispatch it to its appropriate handler.
      *
-     * @param  mixed        $job
-     * @param  \ArrayAccess $source
-     * @param  array        $extras
+     * @param mixed $job
+     * @param \ArrayAccess $source
+     * @param array $extras
      *
      * @return mixed
      */
-    public function dispatchFrom($job, \ArrayAccess $source, $extras = [])
+    public function dispatchFrom($job, ArrayAccess $source, $extras = [])
     {
         return app('Illuminate\Contracts\Bus\Dispatcher')->dispatchFrom($job, $source, $extras);
     }

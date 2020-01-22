@@ -1,8 +1,9 @@
 <?php
-namespace Photon\Foundation\Traits;
 
-use ArrayAccess;
+namespace MoeenBasra\Photon\Foundation\Traits;
+
 use Exception;
+use ArrayAccess;
 use ReflectionClass;
 use ReflectionParameter;
 
@@ -11,15 +12,15 @@ trait MarshalTrait
     /**
      * Marshal a command from the given array accessible object.
      *
-     * @param string       $command
+     * @param string $command
      * @param \ArrayAccess $source
-     * @param array        $extras
+     * @param array $extras
      *
-     * @return mixed
+     * @return object
      */
-    protected function marshal($command, ArrayAccess $source, array $extras = [])
+    protected function marshal(string $command, ArrayAccess $source, array $extras = [])
     {
-        $injected   = [];
+        $injected = [];
         $reflection = new ReflectionClass($command);
         if ($constructor = $reflection->getConstructor()) {
             $injected = array_map(function ($parameter) use ($command, $source, $extras) {
@@ -33,16 +34,16 @@ trait MarshalTrait
     /**
      * Get a parameter value for a marshaled command.
      *
-     * @param                      $command
-     * @param \ArrayAccess         $source
+     * @param string$command
+     * @param \ArrayAccess $source
      * @param \ReflectionParameter $parameter
-     * @param array                $extras
+     * @param array $extras
      *
      * @return \ArrayAccess|mixed
      * @throws \Exception
      */
     protected function getParameterValueForCommand(
-        $command,
+        string $command,
         ArrayAccess $source,
         ReflectionParameter $parameter,
         array $extras = []
@@ -56,6 +57,6 @@ trait MarshalTrait
         if ($parameter->isDefaultValueAvailable()) {
             return $parameter->getDefaultValue();
         }
-        throw new Exception("Unable to map parameter [{$parameter->name}] to command [{$command}]");
+        throw new Exception(sprintf('Unable to map parameter [{%s}] to command [{%s}]', $parameter->name, $command));
     }
 }

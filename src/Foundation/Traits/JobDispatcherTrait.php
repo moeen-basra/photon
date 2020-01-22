@@ -1,6 +1,8 @@
 <?php
-namespace Photon\Foundation\Traits;
 
+namespace MoeenBasra\Photon\Foundation\Traits;
+
+use ReflectionClass;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 
@@ -14,9 +16,9 @@ trait JobDispatcherTrait
      * When the $arguments is an instance of Request
      * it will call dispatchFrom instead.
      *
-     * @param string                         $job
+     * @param string $job
      * @param array|\Illuminate\Http\Request $arguments
-     * @param array                          $extra
+     * @param array $extra
      *
      * @return mixed
      */
@@ -25,7 +27,7 @@ trait JobDispatcherTrait
         if ($arguments instanceof Request) {
             $result = $this->dispatch($this->marshal($job, $arguments, $extra));
         } else {
-            if (! is_object($job)) {
+            if (!is_object($job)) {
                 $job = $this->marshal($job, new Collection(), $arguments);
             }
             $result = $this->dispatch($job);
@@ -37,8 +39,8 @@ trait JobDispatcherTrait
     /**
      * Run the given job in the given queue.
      *
-     * @param        $job
-     * @param array  $arguments
+     * @param $job
+     * @param array $arguments
      * @param string $queue
      *
      * @return mixed
@@ -46,9 +48,9 @@ trait JobDispatcherTrait
     public function runInQueue($job, array $arguments = [], $queue = 'default')
     {
         // instantiate and queue the job
-        $reflection  = new \ReflectionClass($job);
+        $reflection = new ReflectionClass($job);
         $jobInstance = $reflection->newInstanceArgs($arguments);
-        $jobInstance->onQueue((string) $queue);
+        $jobInstance->onQueue((string)$queue);
 
         return $this->dispatch($jobInstance);
     }

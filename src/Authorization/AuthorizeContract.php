@@ -1,6 +1,8 @@
 <?php
 
-namespace Photon\Authorization;
+namespace MoeenBasra\Photon\Authorization;
+
+use Closure;
 
 interface AuthorizeContract
 {
@@ -10,5 +12,5 @@ interface AuthorizeContract
 
     public function getRoles();
 
-    public function capableIf(\Closure $closure);
+    public function capableIf(Closure $closure);
 }

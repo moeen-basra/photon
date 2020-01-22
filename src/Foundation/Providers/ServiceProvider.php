@@ -6,7 +6,7 @@
  * Time: 11:21 PM
  */
 
-namespace Photon\Foundation\Providers;
+namespace MoeenBasra\Photon\Foundation\Providers;
 
 use Illuminate\Support\ServiceProvider as BaseServiceProviders;
 

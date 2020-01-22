@@ -1,11 +1,14 @@
 <?php
 
-namespace Photon\Foundation\Http;
+namespace MoeenBasra\Photon\Foundation\Http;
+
+use Illuminate\Support\Str;
+use InvalidArgumentException;
 
 /**
  * Class RequestFilter
  *
- * @package Photon\Foundation\Http
+ * @package MoeenBasra\Photon\Foundation\Http
  */
 class RequestFilter
 {
@@ -32,7 +35,7 @@ class RequestFilter
     /**
      * @var array
      */
-    private $comparisonSymbols = ['=', '<', '>', '<=', '>=', '!='];
+    private $comparisonSymbols = [':', '=', '<', '>', '<=', '>=', '!='];
 
     /**
      * RequestFilter constructor.
@@ -50,43 +53,6 @@ class RequestFilter
     }
 
     /**
-     * Initialize Filter
-     *
-     * @param $filter
-     *
-     * @return bool
-     * @throws \InvalidArgumentException
-     */
-    protected function setFilter($filter)
-    {
-        if (!$this->isValidFilter($filter)) {
-            throw new \InvalidArgumentException("Invalid request filter {$filter} supplied");
-        }
-
-        $this->rawFilter = $filter;
-
-        $this->parseFilter();
-
-        return true;
-    }
-
-    /**
-     * Initial Filter Validation
-     *
-     * @param $filter
-     *
-     * @return bool
-     */
-    protected function isValidFilter($filter)
-    {
-        if (!str_contains($filter, $this->getComparisonSymbols())) {
-            return false;
-        }
-
-        return true;
-    }
-
-    /**
      * Getter for filter comparison symbol
      *
      * @return array
@@ -94,33 +60,6 @@ class RequestFilter
     public function getComparisonSymbols()
     {
         return $this->comparisonSymbols;
-    }
-
-    /**
-     * Parses the raw filter
-     *
-     * @return bool
-     * @throws \InvalidArgumentException
-     */
-    protected function parseFilter()
-    {
-        $filterFragments = [];
-        preg_match('/^([a-zA-Z0-9\-\_\.]+)(' . implode('|', $this->getComparisonSymbols()) . '{1})(([a-zA-Z0-9\-\_\:\% ]+)|\(([a-zA-Z0-9\-\_\:\% \|]+)\))$/', $this->getRawFilter(), $filterFragments);
-
-        if (count($filterFragments) < 5) {
-            throw new \InvalidArgumentException('Malformed filter ' . $this->getRawFilter() . ' was provided');
-        }
-
-        $this->setField($filterFragments[1]);
-        $this->setCompareSymbol($filterFragments[2]);
-
-        if (count($filterFragments) == 6) {
-            $this->setFilterValue($filterFragments[5]);
-        } else {
-            $this->setFilterValue($filterFragments[3]);
-        }
-
-        return true;
     }
 
     /**
@@ -146,7 +85,7 @@ class RequestFilter
     /**
      * Return filter field object
      *
-     * @return \Photon\Foundation\Http\RequestField
+     * @return \MoeenBasra\Photon\Foundation\Http\RequestField
      */
     public function getField()
     {
@@ -214,6 +153,72 @@ class RequestFilter
             $this->filterValue = $arrayFilterValue;
         } else {
             $this->filterValue = $filterValue;
+        }
+
+        return true;
+    }
+
+    /**
+     * Initialize Filter
+     *
+     * @param $filter
+     *
+     * @return bool
+     * @throws \InvalidArgumentException
+     */
+    protected function setFilter($filter)
+    {
+        if (!$this->isValidFilter($filter)) {
+            throw new InvalidArgumentException("Invalid request filter {$filter} supplied");
+        }
+
+        $this->rawFilter = $filter;
+
+        $this->parseFilter();
+
+        return true;
+    }
+
+    /**
+     * Initial Filter Validation
+     *
+     * @param $filter
+     *
+     * @return bool
+     */
+    protected function isValidFilter($filter)
+    {
+        if (!Str::contains($filter, $this->getComparisonSymbols())) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Parses the raw filter
+     *
+     * @return bool
+     * @throws \InvalidArgumentException
+     */
+    protected function parseFilter()
+    {
+        $filterFragments = [];
+        preg_match('/^([a-zA-Z0-9\-\_\.]+)(' . implode('|',
+                $this->getComparisonSymbols()) . '{1})(([a-zA-Z0-9\-\_\:\% ]+)|\(([a-zA-Z0-9\-\_\:\% \|]+)\))$/',
+            $this->getRawFilter(), $filterFragments);
+
+        if (count($filterFragments) < 5) {
+            throw new InvalidArgumentException('Malformed filter ' . $this->getRawFilter() . ' was provided');
+        }
+
+        $this->setField($filterFragments[1]);
+        $this->setCompareSymbol($filterFragments[2]);
+
+        if (count($filterFragments) == 6) {
+            $this->setFilterValue($filterFragments[5]);
+        } else {
+            $this->setFilterValue($filterFragments[3]);
         }
 
         return true;

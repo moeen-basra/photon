@@ -1,11 +1,13 @@
 <?php
 
-namespace Photon\Foundation\Http;
+namespace MoeenBasra\Photon\Foundation\Http;
+
+use InvalidArgumentException;
 
 /**
  * Class RequestSort
  *
- * @package Photon\Foundation\Http
+ * @package MoeenBasra\Photon\Foundation\Http
  */
 class RequestSort
 {
@@ -35,45 +37,9 @@ class RequestSort
     }
 
     /**
-     * Sets the sort request field
-     *
-     * @param $sort
-     *
-     * @throws  \InvalidArgumentException
-     * @return bool
-     */
-    protected function setSort($sort)
-    {
-        if (! $this->validateSort($sort)) {
-            throw new \InvalidArgumentException("Invalid request sort field {$sort} supplied");
-        }
-
-        $this->rawSort = $sort;
-        $this->parseSort();
-
-        return true;
-    }
-
-    /**
-     * Validate the syntax of the sort request field
-     *
-     * @param $sort
-     *
-     * @return bool
-     */
-    protected function validateSort($sort)
-    {
-        if (strpos($sort, '!', 0) === 0 || count(explode(':', $sort)) == 2 || preg_match('/^[a-z0-9\_\.\-]+$/', $sort)) {
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
      * Return the request sort field instance
      *
-     * @return \Photon\Foundation\Http\RequestField
+     * @return \MoeenBasra\Photon\Foundation\Http\RequestField
      */
     public function getField()
     {
@@ -119,6 +85,53 @@ class RequestSort
     }
 
     /**
+     * Get the taw text representation of the request sort field
+     *
+     * @return string
+     */
+    public function getRawSort()
+    {
+        return $this->rawSort;
+    }
+
+    /**
+     * Sets the sort request field
+     *
+     * @param $sort
+     *
+     * @return bool
+     * @throws  \InvalidArgumentException
+     */
+    protected function setSort($sort)
+    {
+        if (!$this->validateSort($sort)) {
+            throw new InvalidArgumentException("Invalid request sort field {$sort} supplied");
+        }
+
+        $this->rawSort = $sort;
+        $this->parseSort();
+
+        return true;
+    }
+
+    /**
+     * Validate the syntax of the sort request field
+     *
+     * @param $sort
+     *
+     * @return bool
+     */
+    protected function validateSort($sort)
+    {
+        if (strpos($sort, '!', 0) === 0 || count(explode(':', $sort)) == 2 || preg_match('/^[a-z0-9\_\.\-]+$/',
+                $sort)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
      * Parses and prepares the request sort field
      *
      * @return bool
@@ -130,7 +143,7 @@ class RequestSort
             $fieldName = substr($this->getRawSort(), 1);
             $direction = 'asc';
         } elseif (strpos($this->getRawSort(), ':') !== false) {
-            list($fieldName, $direction) = explode(':', $this->getRawSort());
+            [$fieldName, $direction] = explode(':', $this->getRawSort());
         } else {
             $fieldName = $this->getRawSort();
         }
@@ -139,15 +152,5 @@ class RequestSort
         $this->setDirection($direction);
 
         return true;
-    }
-
-    /**
-     * Get the taw text representation of the request sort field
-     *
-     * @return string
-     */
-    public function getRawSort()
-    {
-        return $this->rawSort;
     }
 }
