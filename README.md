@@ -51,9 +51,9 @@ use MoeenBasra\Photon\Foundation\Traits\JobDispatcherTrait;
 and in the render method run the following job if request accepts `application\json`
 
 ```
-$message = $e->getMessage();
-$class = get_class($e);
-$code = $e->getCode();
+$message = $exception->getMessage();
+$class = get_class($exception);
+$code = $exception->getCode();
 
 if ($request->expectsJson()) {
     return $this->run(JsonErrorResponseJob::class, [
