@@ -10,7 +10,7 @@ use MoeenBasra\Photon\Foundation\Traits\ServesFeaturesTrait;
  *
  * @package MoeenBasra\Photon\Foundation
  */
-class Controller extends \Illuminate\Routing\Controller
+abstract class Controller extends \Illuminate\Routing\Controller
 {
     use ServesFeaturesTrait;
 }

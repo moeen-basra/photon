@@ -12,6 +12,6 @@ class HttpServiceProvider extends ServiceProvider
             return Request::capture();
         });
 
-        $this->app->alias(Request::class, 'request');
+        $this->app->alias('request', \MoeenBasra\Photon\Foundation\Http\Request::class);
     }
 }
