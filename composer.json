@@ -25,10 +25,7 @@
   "autoload": {
     "psr-4": {
       "MoeenBasra\\Photon\\": "src/"
-    },
-    "files": [
-      "src/helpers.php"
-    ]
+    }
   },
   "minimum-stability": "dev",
   "prefer-stable": true
