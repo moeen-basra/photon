@@ -1,5 +1,5 @@
 #Photon
  
-An Extension to Lumen with common Laravel commands and SRP Design Pattern.
+An Extension to Lumen with SRP Design Pattern.
 
-This project is under development please don't use this in production.
+This project is under development please use this in production with care.
