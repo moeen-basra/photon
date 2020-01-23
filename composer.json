@@ -17,14 +17,12 @@
   "require": {
     "php": ">=7.2",
     "ext-json": "*",
-    "ext-mbstring": "*"
-  },
-  "require-dev": {
+    "ext-mbstring": "*",
     "laravel/framework": "^6.12"
   },
   "autoload": {
     "psr-4": {
-      "MoeenBasra\\Photon\\": "src/"
+      "Photon\\": "src/"
     }
   },
   "minimum-stability": "dev",

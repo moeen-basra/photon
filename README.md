@@ -22,10 +22,10 @@ $response = $kernel->handle(
 with
 
 ```
-$app->alias('request', \MoeenBasra\Photon\Foundation\Http\Request::class);
+$app->alias('request', \Photon\Foundation\Http\Request::class);
 
 $response = $kernel->handle(
-    $request = \MoeenBasra\Photon\Foundation\Http\Request::capture()
+    $request = \Photon\Foundation\Http\Request::capture()
 );
 ```
 
@@ -35,17 +35,17 @@ Open the class `App\Http\Controllers\Controller` and replace the following code
 
 with
 
-`use MoeenBasra\Photon\Foundation\Controller as BaseController;`
+`use Photon\Foundation\Controller as BaseController;`
 
 Finally you can extends the `app\Exceptions\Handler` with the following class
 
-```\MoeenBasra\Photon\Foundation\Exceptions\Handler\Handler```
+```\Photon\Foundation\Exceptions\Handler\Handler```
 
 or use the following traits in your existing exception handler
 
 ```
-use MoeenBasra\Photon\Foundation\Traits\MarshalTrait;
-use MoeenBasra\Photon\Foundation\Traits\JobDispatcherTrait;
+use Photon\Foundation\Traits\MarshalTrait;
+use Photon\Foundation\Traits\JobDispatcherTrait;
 ```
 
 and in the render method run the following job if request accepts `application\json`
@@ -79,7 +79,7 @@ Here is a sample code for a controller serving the feature.
 namespace App\Http\Controllers\Api\Auth;
 
 use Illuminate\Http\JsonResponse;
-use MoeenBasra\Photon\Foundation\Controller;
+use Photon\Foundation\Controller;
 use App\Features\Api\Auth\RegisterFeature;
 
 class AuthController extends Controller
@@ -108,9 +108,9 @@ Here is sample code for Feature running the job
 ```php
 namespace App\Features\Api\Auth;
 
-use MoeenBasra\Photon\Foundation\Feature;
+use Photon\Foundation\Feature;
 use App\Operations\Auth\RegisterOperation;
-use MoeenBasra\Photon\Domains\Http\Jobs\JsonResponseJob;
+use Photon\Domains\Http\Jobs\JsonResponseJob;
 use App\Domains\Auth\Jobs\Register\ValidateRegisterRequestJob;
 
 class RegisterFeature extends Feature
