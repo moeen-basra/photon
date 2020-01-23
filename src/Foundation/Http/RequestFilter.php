@@ -1,6 +1,6 @@
 <?php
 
-namespace MoeenBasra\Photon\Foundation\Http;
+namespace Photon\Foundation\Http;
 
 use Illuminate\Support\Str;
 use InvalidArgumentException;
@@ -8,7 +8,7 @@ use InvalidArgumentException;
 /**
  * Class RequestFilter
  *
- * @package MoeenBasra\Photon\Foundation\Http
+ * @package Photon\Foundation\Http
  */
 class RequestFilter
 {
@@ -85,7 +85,7 @@ class RequestFilter
     /**
      * Return filter field object
      *
-     * @return \MoeenBasra\Photon\Foundation\Http\RequestField
+     * @return \Photon\Foundation\Http\RequestField
      */
     public function getField()
     {

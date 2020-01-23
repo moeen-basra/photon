@@ -1,21 +1,21 @@
 <?php
 
-namespace MoeenBasra\Photon\Domains\Data\Traits;
+namespace Photon\Domains\Data\Traits;
 
 use Exception;
 use Illuminate\Support\Arr;
 use InvalidArgumentException;
 use Illuminate\Database\Eloquent\Builder;
-use MoeenBasra\Photon\Foundation\Http\Request;
-use MoeenBasra\Photon\Foundation\Eloquent\Model;
-use MoeenBasra\Photon\Foundation\Http\RequestSort;
-use MoeenBasra\Photon\Foundation\Http\RequestFilter;
+use Photon\Foundation\Http\Request;
+use Photon\Foundation\Eloquent\Model;
+use Photon\Foundation\Http\RequestSort;
+use Photon\Foundation\Http\RequestFilter;
 use Illuminate\Database\Eloquent\Relations\Relation;
-use MoeenBasra\Photon\Foundation\Http\RequestRelationField;
-use MoeenBasra\Photon\Foundation\Http\RequestSortCollection;
-use MoeenBasra\Photon\Foundation\Http\RequestFieldCollection;
-use MoeenBasra\Photon\Foundation\Http\RequestFilterCollection;
-use MoeenBasra\Photon\Foundation\Http\RequestRelationFieldCollection;
+use Photon\Foundation\Http\RequestRelationField;
+use Photon\Foundation\Http\RequestSortCollection;
+use Photon\Foundation\Http\RequestFieldCollection;
+use Photon\Foundation\Http\RequestFilterCollection;
+use Photon\Foundation\Http\RequestRelationFieldCollection;
 
 trait EloquentRequestQueryable
 {

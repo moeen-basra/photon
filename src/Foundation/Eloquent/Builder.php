@@ -1,8 +1,8 @@
 <?php
 
-namespace MoeenBasra\Photon\Foundation\Eloquent;
+namespace Photon\Foundation\Eloquent;
 
-use MoeenBasra\Photon\Foundation\Traits\BuilderTrait;
+use Photon\Foundation\Traits\BuilderTrait;
 
 class Builder extends \Illuminate\Database\Eloquent\Builder
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace MoeenBasra\Photon\Foundation\Http;
+namespace Photon\Foundation\Http;
 
 /**
  * Class RequestSort
  *
- * @package MoeenBasra\Photon\Foundation\Http
+ * @package Photon\Foundation\Http
  */
 class RequestRelationField extends RequestField
 {
@@ -35,7 +35,7 @@ class RequestRelationField extends RequestField
     /**
      * Returns collection of sub-field objects
      *
-     * @return \MoeenBasra\Photon\Foundation\Http\RequestFieldCollection
+     * @return \Photon\Foundation\Http\RequestFieldCollection
      */
     public function getSubFields()
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace MoeenBasra\Photon\Authorization;
+namespace Photon\Authorization;
 
 use Illuminate\Support\ServiceProvider;
 

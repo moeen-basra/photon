@@ -1,6 +1,6 @@
 <?php
 
-namespace MoeenBasra\Photon\Foundation\Http;
+namespace Photon\Foundation\Http;
 
 
 class Request extends \Illuminate\Http\Request
@@ -33,7 +33,7 @@ class Request extends \Illuminate\Http\Request
     /**
      * Get Request Fields
      *
-     * @return \MoeenBasra\Photon\Foundation\Http\RequestFieldCollection|null
+     * @return \Photon\Foundation\Http\RequestFieldCollection|null
      */
     public function getFields()
     {
@@ -55,7 +55,7 @@ class Request extends \Illuminate\Http\Request
     /**
      * Get Request Filters
      *
-     * @return \MoeenBasra\Photon\Foundation\Http\RequestFilterCollection
+     * @return \Photon\Foundation\Http\RequestFilterCollection
      */
     public function getFilters()
     {
@@ -77,7 +77,7 @@ class Request extends \Illuminate\Http\Request
     /**
      *  Get Request sort fields
      *
-     * @return \MoeenBasra\Photon\Foundation\Http\RequestSortCollection
+     * @return \Photon\Foundation\Http\RequestSortCollection
      */
     public function getSort()
     {
@@ -99,7 +99,7 @@ class Request extends \Illuminate\Http\Request
     /**
      * Get Request Relations
      *
-     * @return \MoeenBasra\Photon\Foundation\Http\RequestRelationFieldCollection
+     * @return \Photon\Foundation\Http\RequestRelationFieldCollection
      */
     public function getRelations()
     {

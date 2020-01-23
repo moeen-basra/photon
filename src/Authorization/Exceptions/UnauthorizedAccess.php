@@ -1,6 +1,6 @@
 <?php
 
-namespace MoeenBasra\Photon\Authorization\Exceptions;
+namespace Photon\Authorization\Exceptions;
 
 use Exception;
 

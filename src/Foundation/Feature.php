@@ -1,9 +1,9 @@
 <?php
 
-namespace MoeenBasra\Photon\Foundation;
+namespace Photon\Foundation;
 
-use MoeenBasra\Photon\Foundation\Traits\MarshalTrait;
-use MoeenBasra\Photon\Foundation\Traits\JobDispatcherTrait;
+use Photon\Foundation\Traits\MarshalTrait;
+use Photon\Foundation\Traits\JobDispatcherTrait;
 
 abstract class Feature
 {

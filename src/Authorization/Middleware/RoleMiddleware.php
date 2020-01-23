@@ -1,10 +1,10 @@
 <?php
 
-namespace MoeenBasra\Photon\Authorization\Middleware;
+namespace Photon\Authorization\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Foundation\Application;
-use MoeenBasra\Photon\Authorization\Exceptions\UnauthorizedAccess;
+use Photon\Authorization\Exceptions\UnauthorizedAccess;
 
 class RoleMiddleware
 {
