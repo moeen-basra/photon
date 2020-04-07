@@ -79,7 +79,7 @@ Here is a sample code for a controller serving the feature.
 namespace App\Http\Controllers\Api\Auth;
 
 use Illuminate\Http\JsonResponse;
-use Photon\Foundation\Controller;
+use MoeenBasra\Photon\Foundation\Controller;
 use App\Features\Api\Auth\RegisterFeature;
 
 class AuthController extends Controller
@@ -108,9 +108,9 @@ Here is sample code for Feature running the job
 ```php
 namespace App\Features\Api\Auth;
 
-use Photon\Foundation\Feature;
+use MoeenBasra\Photon\Foundation\Feature;
 use App\Operations\Auth\RegisterOperation;
-use Photon\Domains\Http\Jobs\JsonResponseJob;
+use MoeenBasra\Photon\Domains\Http\Jobs\JsonResponseJob;
 use App\Domains\Auth\Jobs\Register\ValidateRegisterRequestJob;
 
 class RegisterFeature extends Feature
