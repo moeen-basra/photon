@@ -1,6 +1,6 @@
 <?php
 
-namespace MoeenBasra\Photon\Foundation\Traits;
+namespace Photon\Foundation\Traits;
 
 use Exception;
 use ArrayAccess;

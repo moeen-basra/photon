@@ -1,6 +1,6 @@
 <?php
 
-namespace MoeenBasra\Photon\Foundation\Pagination;
+namespace Photon\Foundation\Pagination;
 
 class LengthAwarePaginator extends \Illuminate\Pagination\LengthAwarePaginator
 {

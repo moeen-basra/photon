@@ -1,10 +1,10 @@
 <?php
 
 
-namespace MoeenBasra\Photon\Foundation\Traits;
+namespace Photon\Foundation\Traits;
 
 
-use MoeenBasra\Photon\Foundation\Eloquent\Builder;
+use Photon\Foundation\Eloquent\Builder;
 
 trait ModelTrait
 {

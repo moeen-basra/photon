@@ -1,6 +1,6 @@
 <?php
 
-namespace MoeenBasra\Photon\Foundation;
+namespace Photon\Foundation;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;

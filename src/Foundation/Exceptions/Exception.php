@@ -1,6 +1,6 @@
 <?php
 
-namespace MoeenBasra\Photon\Foundation\Exceptions;
+namespace Photon\Foundation\Exceptions;
 
 use Throwable;
 

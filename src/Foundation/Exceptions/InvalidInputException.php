@@ -1,11 +1,11 @@
 <?php
 
-namespace MoeenBasra\Photon\Foundation\Exceptions;
+namespace Photon\Foundation\Exceptions;
 
 /**
  * Class ValidationFailedException
  *
- * @package MoeenBasra\Photon\Exceptions
+ * @package Photon\Exceptions
  * @inheritdoc
  */
 class InvalidInputException extends Exception

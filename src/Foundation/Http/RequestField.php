@@ -1,13 +1,13 @@
 <?php
 
-namespace MoeenBasra\Photon\Foundation\Http;
+namespace Photon\Foundation\Http;
 
 use InvalidArgumentException;
 
 /**
  * Class RequestField
  *
- * @package MoeenBasra\Photon\Foundation\Http
+ * @package Photon\Foundation\Http
  */
 class RequestField
 {

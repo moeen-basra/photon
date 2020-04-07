@@ -1,14 +1,14 @@
 <?php
 
-namespace MoeenBasra\Photon\Foundation;
+namespace Photon\Foundation;
 
 
-use MoeenBasra\Photon\Foundation\Traits\ServesFeaturesTrait;
+use Photon\Foundation\Traits\ServesFeaturesTrait;
 
 /**
  * Class Controller
  *
- * @package MoeenBasra\Photon\Foundation
+ * @package Photon\Foundation
  */
 abstract class Controller extends \Illuminate\Routing\Controller
 {

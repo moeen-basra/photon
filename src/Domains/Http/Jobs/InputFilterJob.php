@@ -1,9 +1,9 @@
 <?php
 
-namespace MoeenBasra\Photon\Domains\Http\Jobs;
+namespace Photon\Domains\Http\Jobs;
 
-use MoeenBasra\Photon\Foundation\Job;
-use MoeenBasra\Photon\Foundation\Exceptions\Exception;
+use Photon\Foundation\Job;
+use Photon\Foundation\Exceptions\Exception;
 
 class InputFilterJob extends Job
 {

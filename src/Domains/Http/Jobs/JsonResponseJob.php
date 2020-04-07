@@ -1,8 +1,8 @@
 <?php
 
-namespace MoeenBasra\Photon\Domains\Http\Jobs;
+namespace Photon\Domains\Http\Jobs;
 
-use MoeenBasra\Photon\Foundation\Job;
+use Photon\Foundation\Job;
 
 class JsonResponseJob extends Job
 {

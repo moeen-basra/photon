@@ -25,7 +25,7 @@
   },
   "autoload": {
     "psr-4": {
-      "MoeenBasra\\Photon\\": "src/"
+      "Photon\\": "src/"
     }
   },
   "minimum-stability": "dev",

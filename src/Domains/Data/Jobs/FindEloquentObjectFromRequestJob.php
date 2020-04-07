@@ -1,11 +1,11 @@
 <?php
 
-namespace MoeenBasra\Photon\Domains\Data\Jobs;
+namespace Photon\Domains\Data\Jobs;
 
-use MoeenBasra\Photon\Foundation\Job;
-use MoeenBasra\Photon\Foundation\Http\Request;
-use MoeenBasra\Photon\Foundation\Http\RequestFilterCollection;
-use MoeenBasra\Photon\Domains\Data\Traits\EloquentRequestQueryable;
+use Photon\Foundation\Job;
+use Photon\Foundation\Http\Request;
+use Photon\Foundation\Http\RequestFilterCollection;
+use Photon\Domains\Data\Traits\EloquentRequestQueryable;
 
 class FindEloquentObjectFromRequestJob extends Job
 {
