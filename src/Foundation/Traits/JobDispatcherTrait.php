@@ -1,6 +1,6 @@
 <?php
 
-namespace Photon\Foundation\Traits;
+namespace MoeenBasra\Photon\Foundation\Traits;
 
 use ReflectionClass;
 use Illuminate\Http\Request;

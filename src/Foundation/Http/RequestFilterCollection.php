@@ -1,6 +1,6 @@
 <?php
 
-namespace Photon\Foundation\Http;
+namespace MoeenBasra\Photon\Foundation\Http;
 
 use SplObjectStorage;
 use InvalidArgumentException;

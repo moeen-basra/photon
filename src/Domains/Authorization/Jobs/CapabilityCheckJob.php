@@ -1,10 +1,10 @@
 <?php
 
-namespace Photon\Domains\Authorization\Jobs;
+namespace MoeenBasra\Photon\Domains\Authorization\Jobs;
 
 use Closure;
-use Photon\Foundation\Job;
-use Photon\Authorization\Exceptions\UnauthorizedAccess;
+use MoeenBasra\Photon\Foundation\Job;
+use MoeenBasra\Photon\Authorization\Exceptions\UnauthorizedAccess;
 
 class CapabilityCheckJob extends Job
 {

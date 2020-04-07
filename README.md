@@ -25,7 +25,7 @@ with
 $app->alias('request', \Photon\Foundation\Http\Request::class);
 
 $response = $kernel->handle(
-    $request = \Photon\Foundation\Http\Request::capture()
+    $request = \MoeenBasra\Photon\Foundation\Http\Request::capture()
 );
 ```
 
@@ -35,17 +35,17 @@ Open the class `App\Http\Controllers\Controller` and replace the following code
 
 with
 
-`use Photon\Foundation\Controller as BaseController;`
+`use MoeenBasra\Photon\Foundation\Controller as BaseController;`
 
 Finally you can extends the `app\Exceptions\Handler` with the following class
 
-```\Photon\Foundation\Exceptions\Handler\Handler```
+```\MoeenBasra\Photon\Foundation\Exceptions\Handler\Handler```
 
 or use the following traits in your existing exception handler
 
 ```
-use Photon\Foundation\Traits\MarshalTrait;
-use Photon\Foundation\Traits\JobDispatcherTrait;
+use MoeenBasra\Photon\Foundation\Traits\MarshalTrait;
+use MoeenBasra\Photon\Foundation\Traits\JobDispatcherTrait;
 ```
 
 and in the render method run the following job if request accepts `application\json`

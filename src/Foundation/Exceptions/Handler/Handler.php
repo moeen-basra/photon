@@ -1,11 +1,11 @@
 <?php
 
-namespace Photon\Foundation\Exceptions\Handler;
+namespace MoeenBasra\Photon\Foundation\Exceptions\Handler;
 
 use Exception;
-use Photon\Foundation\Traits\MarshalTrait;
-use Photon\Foundation\Traits\JobDispatcherTrait;
-use Photon\Domains\Http\Jobs\JsonErrorResponseJob;
+use MoeenBasra\Photon\Foundation\Traits\MarshalTrait;
+use MoeenBasra\Photon\Foundation\Traits\JobDispatcherTrait;
+use MoeenBasra\Photon\Domains\Http\Jobs\JsonErrorResponseJob;
 
 class Handler extends \Illuminate\Foundation\Exceptions\Handler
 {

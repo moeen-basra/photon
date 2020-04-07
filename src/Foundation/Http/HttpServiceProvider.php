@@ -1,6 +1,6 @@
 <?php
 
-namespace Photon\Foundation\Http;
+namespace MoeenBasra\Photon\Foundation\Http;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -12,6 +12,6 @@ class HttpServiceProvider extends ServiceProvider
             return Request::capture();
         });
 
-        $this->app->alias('request', \Photon\Foundation\Http\Request::class);
+        $this->app->alias('request', \MoeenBasra\Photon\Foundation\Http\Request::class);
     }
 }

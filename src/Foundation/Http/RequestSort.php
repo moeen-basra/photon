@@ -1,13 +1,13 @@
 <?php
 
-namespace Photon\Foundation\Http;
+namespace MoeenBasra\Photon\Foundation\Http;
 
 use InvalidArgumentException;
 
 /**
  * Class RequestSort
  *
- * @package Photon\Foundation\Http
+ * @package MoeenBasra\Photon\Foundation\Http
  */
 class RequestSort
 {
@@ -39,7 +39,7 @@ class RequestSort
     /**
      * Return the request sort field instance
      *
-     * @return \Photon\Foundation\Http\RequestField
+     * @return \MoeenBasra\Photon\Foundation\Http\RequestField
      */
     public function getField()
     {

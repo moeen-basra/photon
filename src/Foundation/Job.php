@@ -1,8 +1,8 @@
 <?php
 
-namespace Photon\Foundation;
+namespace MoeenBasra\Photon\Foundation;
 
-use Photon\Foundation\Traits\JobDispatcherTrait;
+use MoeenBasra\Photon\Foundation\Traits\JobDispatcherTrait;
 
 abstract class Job
 {

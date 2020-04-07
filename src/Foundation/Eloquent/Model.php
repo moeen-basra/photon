@@ -1,8 +1,8 @@
 <?php
 
-namespace Photon\Foundation\Eloquent;
+namespace MoeenBasra\Photon\Foundation\Eloquent;
 
-use Photon\Foundation\Traits\ModelTrait;
+use MoeenBasra\Photon\Foundation\Traits\ModelTrait;
 
 abstract class Model extends \Illuminate\Database\Eloquent\Model
 {

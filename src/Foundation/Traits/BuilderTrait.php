@@ -1,18 +1,18 @@
 <?php
 
 
-namespace Photon\Foundation\Traits;
+namespace MoeenBasra\Photon\Foundation\Traits;
 
 
 use Illuminate\Pagination\Paginator;
-use Photon\Foundation\Pagination\LengthAwarePaginator;
+use MoeenBasra\Photon\Foundation\Pagination\LengthAwarePaginator;
 
 /**
  * Trait BuilderTrait
  *
- * @package Photon\Foundation\Traits
+ * @package MoeenBasra\Photon\Foundation\Traits
  *
- * @property \Photon\Foundation\Eloquent\Model $model
+ * @property \MoeenBasra\Photon\Foundation\Eloquent\Model $model
  */
 trait BuilderTrait
 {

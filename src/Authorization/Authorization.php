@@ -1,6 +1,6 @@
 <?php
 
-namespace Photon\Authorization;
+namespace MoeenBasra\Photon\Authorization;
 
 use Closure;
 use Illuminate\Contracts\Container\Container as Application;

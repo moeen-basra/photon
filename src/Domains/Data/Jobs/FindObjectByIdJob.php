@@ -1,8 +1,8 @@
 <?php
 
-namespace Photon\Domains\Data\Jobs;
+namespace MoeenBasra\Photon\Domains\Data\Jobs;
 
-use Photon\Foundation\Job;
+use MoeenBasra\Photon\Foundation\Job;
 
 class FindObjectByIdJob extends Job
 {

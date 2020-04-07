@@ -1,8 +1,8 @@
 <?php
 
-namespace Photon\Domains\Http\Jobs;
+namespace MoeenBasra\Photon\Domains\Http\Jobs;
 
-use Photon\Foundation\Job;
+use MoeenBasra\Photon\Foundation\Job;
 use Laravel\Lumen\Http\ResponseFactory;
 
 class JsonErrorResponseJob extends Job
