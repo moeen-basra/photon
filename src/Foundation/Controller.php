@@ -3,7 +3,7 @@
 namespace Photon\Foundation;
 
 
-use Photon\Foundation\Traits\ServesFeaturesTrait;
+use Photon\Bus\ServesFeaturesTrait;
 
 /**
  * Class Controller
