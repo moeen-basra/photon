@@ -1,6 +1,6 @@
 <?php
 
-namespace Photon\Foundation\Exceptions;
+namespace Photon\Exceptions;
 
 class InvalidInputException extends Exception
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Photon\Foundation\Exceptions\Handler;
+namespace Photon\Exceptions\Handler;
 
 use Throwable;
 use Photon\Bus\MarshalTrait;
