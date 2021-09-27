@@ -2,11 +2,11 @@
 
 namespace Photon\Foundation;
 
-use Photon\Foundation\Traits\MarshalTrait;
-use Photon\Foundation\Traits\JobDispatcherTrait;
+use Photon\Bus\MarshalTrait;
+use Photon\Bus\UnitDispatcherTrait;
 
 abstract class Operation
 {
     use MarshalTrait;
-    use JobDispatcherTrait;
+    use UnitDispatcherTrait;
 }

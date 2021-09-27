@@ -2,27 +2,18 @@
 
 namespace Photon\Foundation\Exceptions\Handler;
 
-use Exception;
-use Photon\Foundation\Traits\MarshalTrait;
-use Photon\Foundation\Traits\JobDispatcherTrait;
+use Throwable;
+use Photon\Bus\MarshalTrait;
+use Photon\Bus\UnitDispatcherTrait;
 use Photon\Domains\Http\Jobs\JsonErrorResponseJob;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
-class Handler extends \Illuminate\Foundation\Exceptions\Handler
+class Handler extends ExceptionHandler
 {
     use MarshalTrait;
-    use JobDispatcherTrait;
+    use UnitDispatcherTrait;
 
-    /**
-     * @param Exception $e
-     *
-     * @throws Exception
-     */
-    public function report(Exception $e)
-    {
-        parent::report($e);
-    }
-
-    public function render($request, Exception $e)
+    public function render($request, Throwable $e)
     {
         $message = $e->getMessage();
         $class = get_class($e);

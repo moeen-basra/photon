@@ -2,9 +2,9 @@
 
 namespace Photon\Foundation;
 
-use Photon\Foundation\Traits\JobDispatcherTrait;
+use Photon\Bus\UnitDispatcherTrait;
 
 abstract class Job
 {
-    use JobDispatcherTrait;
+    use UnitDispatcherTrait;
 }
