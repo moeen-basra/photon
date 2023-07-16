@@ -1,8 +1,8 @@
 <?php
 
-namespace Photon\Events;
+namespace MoeenBasra\Photon\Events;
 
-class FeatureStarted
+class OperationStartedEvent
 {
     public function __construct(
         readonly public string $name,

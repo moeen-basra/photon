@@ -1,29 +1,31 @@
 <?php
 
-namespace Photon\Actions;
+namespace MoeenBasra\Photon\Actions;
 
 use Illuminate\Http\JsonResponse;
-use Photon\Action;
+use Illuminate\Routing\ResponseFactory;
+use Symfony\Component\HttpFoundation\Response;
 
 class JsonErrorResponseAction extends Action
 {
     public function __construct(
         readonly private string $message = 'Oops, something went wrong!',
-        readonly private ?array $errors = null,
-        readonly private int    $status = 400,
-        readonly private array  $headers = [],
-        readonly private int    $options = 0
+        readonly private ?array $errors = [],
+        readonly private int    $status = Response::HTTP_BAD_REQUEST,
+        readonly private ?array $headers = [],
+        readonly private ?int   $options = 0,
     )
     {
     }
 
-    public function handle(): JsonResponse
+    public function handle(ResponseFactory $factory): JsonResponse
     {
-        $data = [
+        $response = [
             'error' => $this->prepareError(),
             'status' => $this->status,
         ];
-        return response()->json($data, $this->status, $this->headers, $this->options);
+
+        return $factory->json($response, $this->status, $this->headers, $this->options);
     }
 
     private function prepareError(): array

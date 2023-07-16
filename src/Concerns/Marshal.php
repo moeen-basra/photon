@@ -1,23 +1,23 @@
 <?php
 
-namespace Photon\Bus;
+namespace MoeenBasra\Photon\Concerns;
 
 use ArrayAccess;
 use Exception;
 use ReflectionParameter;
 
-trait MarshalTrait
+trait Marshal
 {
     /**
-     * MarshalTrait a command from the given array accessible object.
+     * Marshal a command from the given array accessible object.
      *
-     * @param mixed $command
-     * @param ArrayAccess $source
+     * @param string $command
+     * @param \ArrayAccess $source
      * @param array $extras
      *
      * @return mixed
      */
-    protected function marshal(mixed $command, ArrayAccess $source, array $extras = []): mixed
+    protected function marshal(string $command, ArrayAccess $source, array $extras = []): mixed
     {
         $parameters = [];
 
@@ -46,7 +46,7 @@ trait MarshalTrait
         ArrayAccess         $source,
         ReflectionParameter $parameter,
         array               $extras = []
-    ): mixed
+    )
     {
         if (array_key_exists($parameter->name, $extras)) {
             return $extras[$parameter->name];

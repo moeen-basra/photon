@@ -1,6 +1,6 @@
 {
   "name": "moeen-basra/photon",
-  "description": "Laravel Extension for SRP (Single Responsibility Principle)",
+  "description": "Laravel micro framework for SRP (Single Responsibility Principle)",
   "keywords": [
     "photon",
     "laravel",
@@ -24,7 +24,15 @@
   },
   "autoload": {
     "psr-4": {
-      "Photon\\": "src/"
+      "MoeenBasra\\Photon\\": "src/",
+      "MoeenBasra\\Photon\\Tests\\": "tests/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "MoeenBasra\\Photon\\Providers\\ServiceProvider"
+      ]
     }
   },
   "minimum-stability": "dev",

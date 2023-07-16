@@ -1,10 +1,10 @@
 <?php
 
-namespace Photon\Http;
+namespace MoeenBasra\Photon\Http;
 
-use Photon\Bus\ServesFeaturesTrait;
+use MoeenBasra\Photon\Concerns\ServesFeatures;
 
-abstract class Controller extends \Illuminate\Routing\Controller
+class Controller extends \Illuminate\Routing\Controller
 {
-    use ServesFeaturesTrait;
+    use ServesFeatures;
 }

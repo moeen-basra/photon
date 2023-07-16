@@ -1,125 +1,117 @@
 # Photon
- 
-An Extension to Laravel with SRP Design Pattern.
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](README.md)
 
-### How to use
+Photon is a lightweight extension framework for Laravel that implements the Single Responsibility Principle (SRP) design pattern. It draws inspiration from the [Lucid Framework](https://docs.lucidarch.dev/installation).
 
-install the package using the following command
+## How to Use
 
-```bash
+To use Photon in your Laravel project, follow these steps:
+
+1. Open your terminal and execute the following command:
+
+```shell
 composer require moeen-basra/photon
 ```
 
-Open the file `public/index.php`
+2. Open the `App\Http\Controllers\Controller` class and replace the following code:
 
-Replace the following code
-
-```
-$response = $kernel->handle(
-    $request = Illuminate\Http\Request::capture()
-);
-```
-with
-
-```
-$app->alias('request', \Photon\Foundation\Http\Request::class);
-
-$response = $kernel->handle(
-    $request = \Photon\Foundation\Http\Request::capture()
-);
+```php
+use Illuminate\Routing\Controller as BaseController;
 ```
 
-Open the class `App\Http\Controllers\Controller` and replace the following code
+with:
 
-`use Illuminate\Routing\Controller as BaseController;`
-
-with
-
-`use Photon\Foundation\Controller as BaseController;`
-
-Finally you can extends the `app\Exceptions\Handler` with the following class
-
-```\Photon\Foundation\Exceptions\Handler\Handler```
-
-or use the following traits in your existing exception handler
-
-```
-use Photon\Foundation\Traits\MarshalTrait;
-use Photon\Foundation\Traits\JobDispatcherTrait;
+```php
+use MoeenBasra\Photon\Http\Controller as BaseController;
 ```
 
-and in the render method run the following job if request accepts `application\json`
+3. Extend the `app\Exceptions\Handler` class with the following class:
 
+```php
+MoeenBasra\Photon\Foundation\Exceptions\Handler\Handler
 ```
+
+Alternatively, you can use the following traits in your existing exception handler:
+
+```php
+use MoeenBasra\Photon\Concerns\Marshal;
+use MoeenBasra\Photon\Concerns\ActionRunner;
+```
+
+In the `render` method, execute the following job if the request accepts `application\json`:
+
+```php
 $message = $exception->getMessage();
-$class = get_class($exception);
 $code = $exception->getCode();
+$errors = ($exception instanceof \Illuminate\Validation\ValidationException) ? $exception->errors() : [];
 
 if ($request->expectsJson()) {
     return $this->run(JsonErrorResponseJob::class, [
         'message' => $message,
-        'code' => $class,
+        'errors' => $errors,
         'status' => ($code < 100 || $code >= 600) ? 400 : $code,
     ]);
 }
 ```
 
-Now you can create the following directories in the `app` folder.
+4. Create the following directories inside the `app` folder:
 
 ```
 |-- app
-|  |-- Domains
+|  |-- Actions
 |  |-- Features
 |  |-- Operations
 ```
 
-Here is a sample code for a controller serving the feature.
+5. Here's an example code for a controller that serves the feature:
 
 ```php
 namespace App\Http\Controllers\Api\Auth;
 
-use Illuminate\Http\JsonResponse;
-use Photon\Foundation\Controller;
 use App\Features\Api\Auth\RegisterFeature;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+use MoeenBasra\Photon\Http\Controller;
 
 class AuthController extends Controller
 {
-
     public function __construct()
     {
-        $this->middleware('auth:api', ['only' => 'me', 'logout', 'refresh']);
+        $this->middleware('auth:api', ['only' => ['me', 'logout']]);
     }
 
-    /**
-     * Register user
-     *
-     * @return JsonResponse
-     */
-    public function register(): JsonResponse
+    public function register(Request $request): JsonResponse
     {
-        return $this->serve(RegisterFeature::class);
+        return $this->serve(RegisterFeature::class, [
+            'data' => $request->validated(),
+        ]);
     }
 }
-
 ```
 
-Here is sample code for Feature running the job
+6. Lastly, here's an example code for a feature that runs the job:
 
 ```php
 namespace App\Features\Api\Auth;
 
-use App\Domains\Auth\Jobs\Register\ValidateRegisterRequestJob;use App\Operations\Auth\RegisterOperation;use Photon\Actions\JsonResponseAction;use Photon\Feature;
+use App\Operations\Auth\RegisterOperation;
+use Illuminate\Http\JsonResponse;
+use Photon\Actions\JsonResponseAction;
+use MoeenBasra\Photon\Features\Feature;
 
-class RegisterFeature extends Feature
+final class RegisterFeature extends Feature
 {
-    public function handle()
+    public function __construct(
+        readonly private array $input
+    ){}
+    
+    public function handle(): JsonResponse
     {
-        $input = $this->run(ValidateRegisterRequestJob::class);
-
-        $data = $this->run(RegisterOperation::class, compact('input'));
+        $data = $this->run(RegisterOperation::class, [
+            'input' => $this->input
+        ]);
 
         return $this->run(new JsonResponseAction($data));
     }
 }
-
 ```
