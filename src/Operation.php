@@ -1,6 +1,6 @@
 <?php
 
-namespace Photon\Foundation;
+namespace Photon;
 
 use Photon\Bus\MarshalTrait;
 use Photon\Bus\UnitDispatcherTrait;

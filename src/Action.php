@@ -1,10 +1,10 @@
 <?php
 
-namespace Photon\Foundation;
+namespace Photon;
 
 use Photon\Bus\UnitDispatcherTrait;
 
-abstract class Job
+abstract class Action
 {
     use UnitDispatcherTrait;
 }

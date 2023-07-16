@@ -2,8 +2,8 @@
 
 namespace Photon\Bus;
 
-use Exception;
 use ArrayAccess;
+use Exception;
 use ReflectionParameter;
 
 trait MarshalTrait
@@ -12,7 +12,7 @@ trait MarshalTrait
      * MarshalTrait a command from the given array accessible object.
      *
      * @param mixed $command
-     * @param \ArrayAccess $source
+     * @param ArrayAccess $source
      * @param array $extras
      *
      * @return mixed
@@ -42,11 +42,12 @@ trait MarshalTrait
      * @throws Exception
      */
     protected function getParameterValueForCommand(
-        string $command,
-        ArrayAccess $source,
+        string              $command,
+        ArrayAccess         $source,
         ReflectionParameter $parameter,
-        array $extras = []
-    ): mixed {
+        array               $extras = []
+    ): mixed
+    {
         if (array_key_exists($parameter->name, $extras)) {
             return $extras[$parameter->name];
         }

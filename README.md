@@ -108,10 +108,7 @@ Here is sample code for Feature running the job
 ```php
 namespace App\Features\Api\Auth;
 
-use Photon\Foundation\Feature;
-use App\Operations\Auth\RegisterOperation;
-use Photon\Domains\Http\Jobs\JsonResponseJob;
-use App\Domains\Auth\Jobs\Register\ValidateRegisterRequestJob;
+use App\Domains\Auth\Jobs\Register\ValidateRegisterRequestJob;use App\Operations\Auth\RegisterOperation;use Photon\Actions\JsonResponseAction;use Photon\Feature;
 
 class RegisterFeature extends Feature
 {
@@ -121,7 +118,7 @@ class RegisterFeature extends Feature
 
         $data = $this->run(RegisterOperation::class, compact('input'));
 
-        return $this->run(new JsonResponseJob($data));
+        return $this->run(new JsonResponseAction($data));
     }
 }
 

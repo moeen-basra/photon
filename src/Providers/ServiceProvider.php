@@ -1,6 +1,6 @@
 <?php
 
-namespace Photon\Foundation\Providers;
+namespace Photon\Providers;
 
 use Illuminate\Support\ServiceProvider as BaseServiceProviders;
 

@@ -2,14 +2,14 @@
 
 namespace Photon\Bus;
 
-use ReflectionClass;
-use Photon\Foundation\Job;
-use Illuminate\Http\Request;
-use Photon\Foundation\Operation;
-use Illuminate\Support\Collection;
-use Photon\Foundation\Events\JobStarted;
 use Illuminate\Foundation\Bus\DispatchesJobs;
-use Photon\Foundation\Events\OperationStarted;
+use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
+use Photon\Action;
+use Photon\Events\ActionStarted;
+use Photon\Events\OperationStarted;
+use Photon\Operation;
+use ReflectionClass;
 
 trait UnitDispatcherTrait
 {
@@ -41,8 +41,8 @@ trait UnitDispatcherTrait
                 event(new OperationStarted(get_class($job), $arguments));
             }
 
-            if ($job instanceof Job) {
-                event(new JobStarted(get_class($job), $arguments));
+            if ($job instanceof Action) {
+                event(new ActionStarted(get_class($job), $arguments));
             }
 
             $result = $this->dispatch($job, $arguments);

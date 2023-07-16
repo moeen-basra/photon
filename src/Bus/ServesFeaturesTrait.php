@@ -2,15 +2,14 @@
 
 namespace Photon\Bus;
 
-use Illuminate\Support\Collection;
-use Photon\Foundation\Events\FeatureStarted;
 use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Support\Collection;
+use Photon\Events\FeatureStarted;
 
 trait ServesFeaturesTrait
 {
     use DispatchesJobs;
     use MarshalTrait;
-
 
     public function serve(string $feature, array $arguments = []): mixed
     {
