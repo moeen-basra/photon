@@ -120,5 +120,5 @@ final class RegisterFeature extends Feature
 
 Photon is released under the [MIT License](https://opensource.org/licenses/MIT). See the [LICENSE](LICENSE) file for details.
 
-# Contact
+## Contact
 You can reach me here [moeen.basra@gamil.com](mailto:moeen.basra@gamil.com)
