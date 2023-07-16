@@ -1,5 +1,5 @@
 # Photon
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](README.md)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 Photon is a lightweight extension framework for Laravel that implements the Single Responsibility Principle (SRP) design pattern. It draws inspiration from the [Lucid Framework](https://docs.lucidarch.dev/installation).
 
@@ -115,3 +115,10 @@ final class RegisterFeature extends Feature
     }
 }
 ```
+
+## License
+
+Photon is released under the [MIT License](https://opensource.org/licenses/MIT). See the [LICENSE](LICENSE) file for details.
+
+# Contact
+You can reach me here [moeen.basra@gamil.com](mailto:moeen.basra@gamil.com)
