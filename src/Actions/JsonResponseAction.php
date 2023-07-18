@@ -8,6 +8,12 @@ use Symfony\Component\HttpFoundation\Response;
 
 class JsonResponseAction extends Action
 {
+    /**
+     * @param mixed $content
+     * @param int|null $status
+     * @param array<string, string>|null $headers
+     * @param int|null $options
+     */
     public function __construct(
         readonly private mixed  $content,
         readonly private ?int   $status = Response::HTTP_OK,

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace MoeenBasra\Photon\Actions;
 
 use Illuminate\Http\JsonResponse;
@@ -8,6 +10,13 @@ use Symfony\Component\HttpFoundation\Response;
 
 class JsonErrorResponseAction extends Action
 {
+    /**
+     * @param string $message
+     * @param array<string, string|array<string>>|null $errors
+     * @param int $status
+     * @param array<string, string>|null $headers
+     * @param int|null $options
+     */
     public function __construct(
         readonly private string $message = 'Oops, something went wrong!',
         readonly private ?array $errors = [],
@@ -28,6 +37,11 @@ class JsonErrorResponseAction extends Action
         return $factory->json($response, $this->status, $this->headers, $this->options);
     }
 
+    /**
+     * parse the errors before returning
+     *
+     * @return array<string, string|array<string>>
+     */
     private function prepareError(): array
     {
         $error = [

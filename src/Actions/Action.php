@@ -3,7 +3,7 @@
 namespace MoeenBasra\Photon\Actions;
 
 
-use MoeenBasra\Photon\Tests\MockMe;
+use MoeenBasra\Photon\Tests\Concerns\MockMe;
 
 /**
  * An abstract Action to be extended by every Action.

@@ -15,7 +15,7 @@ trait ServesFeatures
      * Serve the given feature with the given arguments.
      *
      * @param string $feature
-     * @param array $arguments
+     * @param array<string, mixed> $arguments
      *
      * @return mixed
      */

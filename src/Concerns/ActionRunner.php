@@ -28,16 +28,16 @@ trait ActionRunner
      * When the $arguments is an instance of Request
      * it will call dispatchFrom instead.
      *
-     * @param mixed $action
-     * @param array|Request $arguments
-     * @param array $extra
+     * @param object|string<class-string> $action
+     * @param array<string, mixed>|Request $arguments
+     * @param array<string, mixed> $extra
      *
      * @return mixed
      * @throws ReflectionException
      * @throws ContainerExceptionInterface
      * @throws NotFoundExceptionInterface
      */
-    public function run(mixed $action, array|Request $arguments = [], array $extra = []): mixed
+    public function run(object|string $action, array|Request $arguments = [], array $extra = []): mixed
     {
         if (is_object($action) && !App::runningUnitTests()) {
             $result = $this->dispatchSync($action);
@@ -80,8 +80,8 @@ trait ActionRunner
     /**
      * Run the given unit in the given queue.
      *
-     * @param string $unit
-     * @param array $arguments
+     * @param string<class-string> $unit
+     * @param array<string, mixed> $arguments
      * @param string|null $queue
      *
      * @return mixed

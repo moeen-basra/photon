@@ -11,9 +11,9 @@ trait Marshal
     /**
      * Marshal a command from the given array accessible object.
      *
-     * @param string $command
-     * @param \ArrayAccess $source
-     * @param array $extras
+     * @param string<class-string> $command
+     * @param ArrayAccess $source
+     * @param array<string, mixed> $extras
      *
      * @return mixed
      */
@@ -33,10 +33,10 @@ trait Marshal
     /**
      * Get a parameter value for a marshaled command.
      *
-     * @param string $command
-     * @param \ArrayAccess $source
-     * @param \ReflectionParameter $parameter
-     * @param array $extras
+     * @param string<class-string> $command
+     * @param ArrayAccess<numeric|string, mixed> $source
+     * @param ReflectionParameter $parameter
+     * @param array<string, mixed> $extras
      *
      * @return mixed
      * @throws Exception
@@ -46,7 +46,7 @@ trait Marshal
         ArrayAccess         $source,
         ReflectionParameter $parameter,
         array               $extras = []
-    )
+    ): mixed
     {
         if (array_key_exists($parameter->name, $extras)) {
             return $extras[$parameter->name];

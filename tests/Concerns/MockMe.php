@@ -1,6 +1,9 @@
 <?php
 
-namespace MoeenBasra\Photon\Tests;
+namespace MoeenBasra\Photon\Tests\Concerns;
+
+use MoeenBasra\Photon\Tests\UnitMock;
+use MoeenBasra\Photon\Tests\UnitMockRegistry;
 
 trait MockMe
 {
